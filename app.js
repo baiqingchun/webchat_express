@@ -12,7 +12,7 @@ var app = express();
 var config = {
     token: 'weixin',//token是你申请测试公众号时候填写的token
     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
-    encodingAESKey: 'ZEtViedarf49EUOCDeu45pqhkZhKPFBjSHI2DynP4vq',
+    encodingAESKey: 'Dev2P4vpIu3eRqVn5NMknNH94G6o6sCgBtJZUI3blEK',
     checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
