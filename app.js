@@ -13,7 +13,7 @@ var config = {
     token: 'weixin',//token是你申请测试公众号时候填写的token
     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
     encodingAESKey: 'Dev2P4vpIu3eRqVn5NMknNH94G6o6sCgBtJZUI3blEK',
-    checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
+    checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
 // view engine setup
@@ -52,10 +52,10 @@ app.use(function(err, req, res, next) {
 //以下开始为获取到微信服务器发送过来的消息，并在此处回复消息
 //此处监控的是URL的wechat，那么在配置微信的URL时，也需要在主机URL地址后面加入wechat这样才可以获取到数据
 app.use(express.query());
-app.use('/wechat', wechat(config.token, function (req, res, next) {
+app.use('/wechat', wechat(config, function (req, res, next) {
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
-
+     console.log('reqqqqq',req)
 
     console.log(message);
     if(message.MsgType === 'text')
