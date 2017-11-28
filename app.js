@@ -52,7 +52,7 @@ app.use(function(err, req, res, next) {
 //以下开始为获取到微信服务器发送过来的消息，并在此处回复消息
 //此处监控的是URL的wechat，那么在配置微信的URL时，也需要在主机URL地址后面加入wechat这样才可以获取到数据
 app.use(express.query());
-app.use('/wechat', wechat(config, function (req, res, next) {
+app.use('/wechat', wechat(config.token, function (req, res, next) {
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
 
