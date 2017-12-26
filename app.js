@@ -12,7 +12,7 @@ var app = express();
 var config = {
     token: 'weixin',//token是你申请测试公众号时候填写的token
     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
-    encodingAESKey: 'Dev2P4vpIu3eRqVn5NMknNH94G6o6sCgBtJZUI3blEK',
+    encodingAESKey: '',
     checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
@@ -46,6 +46,9 @@ app.use('/wechat', wechat(config, function (req, res, next) {
     }
     else if(message.MsgType === 'voice')
     {
+    } else if(message.MsgType === 'event')
+    {
+        res.reply(JSON.stringify(message))
     }
     else if(message.MsgType === 'image')
     {
@@ -61,7 +64,7 @@ app.use('/wechat', wechat(config, function (req, res, next) {
 }));
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+/*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -77,6 +80,6 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
+});*/
 module.exports = app;
 
