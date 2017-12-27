@@ -1,17 +1,18 @@
 var wechat = require('wechat');
 var WechatAPI = require('wechat-api');
 const MG = require('../db/address');
+var config = require('../config')();
 let dbTable;
 MG.OnConnected(function () {
     dbTable = MG.db.wechat_user;
 });
-var config = {
+/*var config = {
     token: 'weixin',//token是你申请测试公众号时候填写的token
     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
     appsecret:'26f157015d7b3e20b40b94cf41a038ff',
     encodingAESKey: '',
     checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
-};
+};*/
 
 module.exports = function (app) {
     app.use('/wechat', wechat(config, function (req, res, next) {

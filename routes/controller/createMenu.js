@@ -1,8 +1,10 @@
 var WechatAPI = require('wechat-api');
-var config = {
-    appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
-    appsecret:'26f157015d7b3e20b40b94cf41a038ff',
-};
+var config = require('../config')();
+// var config = {
+//     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
+//     appsecret:'26f157015d7b3e20b40b94cf41a038ff',
+//
+// };
 module.exports = function (app) {
     let menu = {
         "button": [
