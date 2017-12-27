@@ -4,10 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('./app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
-require('./mongo_base').connectDB('mongodb://localhost:27017/db9');
+
+require('./auth').connectDB('mongodb://localhost:27017/db6');
 /**
  * Get port from environment and store in Express.
  */

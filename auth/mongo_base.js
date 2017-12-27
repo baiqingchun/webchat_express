@@ -33,7 +33,7 @@ exports.connectDB = function (conn) {
     return mongolass.connect(conn).then(function () {
 
         //================USER RELATED==================
-        db.wechat_user = mongolass.model('wechat_user', {
+  /*      db.wechat_user = mongolass.model('wechat_user', {
             openid:{type:'string'},
             nickname:{type:'string'},
             headimgurl:{type:'string'},
@@ -42,7 +42,7 @@ exports.connectDB = function (conn) {
             precision: {type: 'number'},  //地理位置精度
             createTime: { type: 'date'}              // 发生时间
         });
-        exports.add_index(db.wechat_user, {openid: 1});
+        exports.add_index(db.wechat_user, {openid: 1});*/
 
 
 
