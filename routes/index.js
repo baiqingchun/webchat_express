@@ -9,4 +9,5 @@ router.get('/', function(req, res, next) {
 module.exports = function (app) {
     require('./test')(app);
     require('./controller/wechat_init')(app);
+    require('./controller/createMenu')(app);
 };

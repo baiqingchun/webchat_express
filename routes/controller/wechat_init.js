@@ -1,4 +1,5 @@
 var wechat = require('wechat');
+var WechatAPI = require('wechat-api');
 const MG = require('../db/address');
 let dbTable;
 MG.OnConnected(function () {
@@ -7,16 +8,21 @@ MG.OnConnected(function () {
 var config = {
     token: 'weixin',//token是你申请测试公众号时候填写的token
     appid: 'wx8ddedaeb1b6a9546',//appid是申请时，自动生成的，就在最顶部
+    appsecret:'26f157015d7b3e20b40b94cf41a038ff',
     encodingAESKey: '',
     checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
 module.exports = function (app) {
     app.use('/wechat', wechat(config, function (req, res, next) {
-        // 微信输入信息都在req.weixin上
         var message = req.weixin;
         var option = {}
-        console.log('reqqqqq',req)
+        /*获取用户信息*/
+        var api = new WechatAPI(config.appid, config.appsecret);
+        api.getUser(message.FromUserName, function (err, data, res) {
+            console.log(data)
+        });
+        // 微信输入信息都在req.weixin上
 
         console.log(message);
         if(message.MsgType === 'text')
@@ -52,4 +58,5 @@ module.exports = function (app) {
             ]);
         }
     }));
+
 }
