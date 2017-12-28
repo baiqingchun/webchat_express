@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');  //我是新引入的ejs插件
 var index = require('./routes/index');
-// var users = require('./routes/users');
+var users = require('./routes/users');
 
 
 var app = express();
@@ -35,7 +35,10 @@ app.use(express.query());
 app.use('/', index);
 app.use('/users', users);
 */
-
+/*app.use('/hhh',function (req,res) {
+    res.send('respond with a resource hello');
+})*/
+app.use('/users', users);
 /*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -10,4 +10,5 @@ module.exports = function (app) {
     require('./test')(app);
     require('./controller/wechat_init')(app);
     require('./controller/createMenu')(app);
+    require('./ceshi')(app);//用于测试用的
 };
